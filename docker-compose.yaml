@@ -8,6 +8,8 @@ services:
     stdin_open: true
     volumes:
       - .:/workspace
+      - python-packages:/usr/local/lib/python3.10/site-packages
+      - python-bin:/usr/local/bin
 volumes:
   python-packages:
   python-bin:
