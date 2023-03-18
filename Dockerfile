@@ -25,7 +25,6 @@ RUN wget https://www.python.org/ftp/python/3.10.9/Python-3.10.9.tgz
 RUN tar -xf Python-3.10.9.tgz
 RUN ./Python-3.10.9/configure --enable-optimizations
 RUN sudo make altinstall
-RUN alias python=python3.10
 
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
@@ -38,4 +37,4 @@ WORKDIR $WORKDIR
 COPY . .
 RUN poetry install --sync
 RUN chmod +x scripts/*.sh
-CMD ["/bin/bash", "scripts/restart_td_agent.sh"]
+CMD ["/bin/bash", "scripts/bin_bash.sh"]
