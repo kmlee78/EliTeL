@@ -4,6 +4,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+      target: fluentd
     volumes:
       - .:/workspace
       - python-packages:/usr/local/lib/python3.10/site-packages

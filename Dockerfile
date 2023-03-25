@@ -28,11 +28,13 @@ ENV PYTHONHASHSEED=random \
 ENV PATH="$POETRY_HOME/bin:$PATH" 
 WORKDIR $WORKDIR
 
+FROM base as poetry_installer
 RUN curl -sSL https://install.python-poetry.org | python3 -
 COPY ./poetry.lock ./pyproject.toml ./
 RUN poetry install --sync 
 
+FROM poetry_installer as fluentd
 RUN curl -fsSL https://toolbelt.treasuredata.com/sh/install-debian-bullseye-td-agent4.sh | sh
 COPY . .
 RUN chmod +x scripts/*.sh
-CMD ["/bin/bash", "scripts/start_td_agent.sh"]
+CMD ["/bin/bash", "scripts/stay_awake.sh"]
