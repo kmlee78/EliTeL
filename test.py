@@ -1,4 +1,4 @@
 from fluent import event, sender
 
-sender.setup("fluentd.test", host="localhost", port=24224)
-event.Event("follow", {"from": "userA", "to": "userB"})
+sender.setup("test", host="localhost", port=24224)
+event.Event("forward", {"from": "userA", "to": "userB"})
